@@ -5,7 +5,8 @@
     <title>My Website Home Page</title>
 </head>
 <body>
-   import time, socket, sys
+   <py-script>
+    import time, socket, sys
 
     print("\nWelcome to Chat Room\n")
     print("Initialising....\n")
@@ -41,5 +42,6 @@
         message = conn.recv(1024)
         message = message.decode()
         print(s_name, ":", message)
+  </py-script>
 </body>
 </html>
