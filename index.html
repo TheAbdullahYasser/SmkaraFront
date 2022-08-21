@@ -17,14 +17,19 @@
     s = socket.socket()
     host = socket.gethostname()
     ip = socket.gethostbyname(host)
-    port = 4444
-    s.bind((host, port))
-    print(host, "(", ip, ")\n")
-    name = "Abdullah"
-     
-    s.listen(1)
-    print("\nWaiting for incoming connections...\n")
-              
+    port = 65432
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+      s.bind((host, port))
+      s.listen()
+      conn, addr = s.accept()
+      with conn:
+          print(f"Connected by {addr}")
+          while True:
+              data = conn.recv(1024)
+              if not data:
+                  break
+              conn.sendall(data)
+
   </py-script>
 </body>
 </html>
