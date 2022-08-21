@@ -14,12 +14,10 @@
     print("Initialising....\n")
     time.sleep(1)
 
-    s = socket.socket()
-    host = socket.gethostname()
-    ip = socket.gethostbyname(host)
+    ip = "172.29.1.0"
     port = 65432
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-      s.bind((host, port))
+      s.bind((ip, port))
       s.listen()
       conn, addr = s.accept()
       with conn:
